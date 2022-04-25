@@ -52,13 +52,27 @@ export class PostsService {
   updatePost(id: string, title: string, location: string) {
     const post: Post = { id: id, title: title, location: location };
     this.http.put('http://localhost:3000/posts/' + id, post)
-    .subscribe(response => {
+      .subscribe(response => {
         const updatedPosts = [...this.posts];
         const oldPostIndex = updatedPosts.findIndex(p => p.id === post.id);
         updatedPosts[oldPostIndex] = post;
         this.posts = updatedPosts;
         this.postsUpdated.next([...this.posts]);
         //this.router.navigate(["/"]);
-    });
-}
+      });
+  }
+
+  // Delete Post By ID
+  deletePost(postId: string) {
+    this.http.delete("http://localhost:3000/posts/" + postId)
+      .subscribe(() => {
+        const updatedPosts = this.posts.filter(post => post.id !== postId);
+        this.posts = updatedPosts;
+        this.postsUpdated.next([...this.posts]);
+      });
+  }
+
+  getPostUpdateListener() {
+    return this.postsUpdated.asObservable();
+  }
 }

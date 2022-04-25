@@ -17,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -27,6 +28,7 @@ import { CardComponent } from './widgets/card/card.component';
 import { PieComponent } from './widgets/pie/pie.component';
 import { PostCreateComponent } from './posts/post-create/post-create.component';
 import { ToastrModule } from 'ngx-toastr';
+import { PostListComponent } from './posts/post-list/post-list.component';
 
 
 
@@ -40,6 +42,7 @@ import { ToastrModule } from 'ngx-toastr';
     CardComponent,
     PieComponent,
     PostCreateComponent,
+    PostListComponent,
   ],
   imports: [
     CommonModule,
@@ -62,7 +65,8 @@ import { ToastrModule } from 'ngx-toastr';
     MatDatepickerModule,
     MatNativeDateModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatExpansionModule
   ],
   exports: [
     HeaderComponent,
@@ -72,7 +76,8 @@ import { ToastrModule } from 'ngx-toastr';
     CardComponent,
     PieComponent,
     MatFormFieldModule,
-    PostCreateComponent
+    PostCreateComponent,
+    PostListComponent
   ]
 })
 export class SharedModule { }

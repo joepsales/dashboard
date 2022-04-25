@@ -55,7 +55,7 @@ export class PostCreateComponent implements OnInit {
             form.value.location
         );
     }
-    //form.resetForm();
+    form.resetForm();
 }
 
 }

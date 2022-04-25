@@ -16,6 +16,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -25,6 +26,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { CardComponent } from './widgets/card/card.component';
 import { PieComponent } from './widgets/pie/pie.component';
 import { PostCreateComponent } from './posts/post-create/post-create.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -58,7 +60,9 @@ import { PostCreateComponent } from './posts/post-create/post-create.component';
     MatRadioModule,
     MatCardModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   exports: [
     HeaderComponent,

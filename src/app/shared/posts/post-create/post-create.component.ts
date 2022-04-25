@@ -4,6 +4,7 @@ import { ActivatedRoute, ParamMap } from "@angular/router";
 import { Post } from "../post.model";
 
 import { PostsService } from "../posts.service";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-post-create',
@@ -21,7 +22,7 @@ export class PostCreateComponent implements OnInit {
   };
   isLoading = false;
 
-  constructor(public postsService: PostsService, public route: ActivatedRoute) { }
+  constructor(public postsService: PostsService, public route: ActivatedRoute, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
@@ -42,18 +43,27 @@ export class PostCreateComponent implements OnInit {
 
   onSavePost(form: NgForm) {
     if (form.invalid) {
+      this.toastr.error('Form is invalid.', 'Error', {
+        progressAnimation: "increasing",
+        progressBar: true
+      })
         return;
     }
     this.isLoading = true;
     if (this.mode === 'create') {
         this.postsService.addPost(form.value.title, form.value.location);
         console.log(form.value.title + " " + form.value.location);
+        this.toastr.success('Post created successfully.', 'Success', {
+          progressAnimation: "increasing",
+          progressBar: true
+        });
     } else {
         this.postsService.updatePost(
             this.postId!, 
             form.value.title, 
             form.value.location
         );
+        
     }
     form.resetForm();
 }

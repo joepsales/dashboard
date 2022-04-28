@@ -25,6 +25,8 @@
     "highcharts": "^10.0.0",
     "highcharts-angular": "^3.0.0",
     "jquery": "^3.6.0",
+    "keycloak-angular": "^9.1.0",
+    "keycloak-js": "^18.0.0",
     "ngx-toastr": "^14.3.0",
     "popper.js": "^1.16.1",
     "rxjs": "~7.4.0",

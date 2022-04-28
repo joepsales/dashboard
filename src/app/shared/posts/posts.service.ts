@@ -15,13 +15,14 @@ export class PostsService {
   // Create Post
   addPost(title: string, location: string) {
     const post: Post = { id: null!, title: title, location: location };
-    this.http.post<{ message: string, postId: string }>('http://localhost:3000/post', post)
+    this.http.post<{ message: string, postId: string }>('http://localhost:3000/posts', post)
       .subscribe((responseData) => {
         const id = responseData.postId;
         post.id = id;
         this.posts.push(post);
         this.postsUpdated.next([...this.posts]);
         //this.router.navigate(["/"]);
+        window.location.reload();
       });
   }
 
@@ -69,6 +70,7 @@ export class PostsService {
         const updatedPosts = this.posts.filter(post => post.id !== postId);
         this.posts = updatedPosts;
         this.postsUpdated.next([...this.posts]);
+        window.location.reload();
       });
   }
 

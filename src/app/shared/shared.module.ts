@@ -29,6 +29,7 @@ import { PieComponent } from './widgets/pie/pie.component';
 import { PostCreateComponent } from './posts/post-create/post-create.component';
 import { ToastrModule } from 'ngx-toastr';
 import { PostListComponent } from './posts/post-list/post-list.component';
+import { PostCreateFacebookComponent } from './posts/post-create-facebook/post-create-facebook.component';
 
 
 
@@ -43,6 +44,7 @@ import { PostListComponent } from './posts/post-list/post-list.component';
     PieComponent,
     PostCreateComponent,
     PostListComponent,
+    PostCreateFacebookComponent,
   ],
   imports: [
     CommonModule,
@@ -77,7 +79,8 @@ import { PostListComponent } from './posts/post-list/post-list.component';
     PieComponent,
     MatFormFieldModule,
     PostCreateComponent,
-    PostListComponent
+    PostListComponent,
+    PostCreateFacebookComponent
   ]
 })
 export class SharedModule { }

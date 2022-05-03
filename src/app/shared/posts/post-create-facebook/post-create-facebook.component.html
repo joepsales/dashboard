@@ -1,0 +1,19 @@
+<mat-card>
+    <form (submit)="onSavePost(postForm)" #postForm="ngForm">
+        <mat-form-field>
+            <input
+            matInput 
+            type="text" 
+            name="content"
+            [ngModel]="post?.content"
+            required
+            minlength="3"
+            placeholder="Post Content">
+        <!-- <mat-error *ngIf="enteredTitle.invalid">Please enter a post title.</mat-error> -->
+    </mat-form-field>
+    <button 
+    mat-raised-button 
+    color="primary"
+    type="submit">Publish Facebook Post</button>
+</form>
+</mat-card>

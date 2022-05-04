@@ -31,9 +31,11 @@ export class PostsService {
 
     // Create Facebook Post
     addFacebookPost(content: string) {
-      const post: FbPost = { content: content };
-      this.http.post<{message: string, postId: string}>('http://localhost:3001/posts/facebook', post.content);
-      console.log(post.content);
+      const fbPost: FbPost = { content: content };
+      this.http.post<any>('http://localhost:3001/posts/facebook', { content: fbPost.content })
+      .subscribe(data => {
+        fbPost.content = data.content;
+      });
         // .subscribe((responseData) => {
         //   post.content = content
         //   console.log(post.content);

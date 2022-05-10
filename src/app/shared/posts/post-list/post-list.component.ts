@@ -29,6 +29,10 @@ export class PostListComponent implements OnInit, OnDestroy {
     this.postsService.deletePost(postId);
   }
 
+  onFacebookPost(post: Post){
+    this.postsService.publishPost(post);
+  }
+
   ngOnDestroy() {
     this.postsSub?.unsubscribe();
   }

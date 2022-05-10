@@ -29,6 +29,14 @@ export class PostsService {
       });
   }
 
+  publishPost(post: Post){
+    const fbPost: FbPost = { content: post.title };
+    this.http.post<any>('http://localhost:3001/posts/facebook', { content: fbPost.content })
+      .subscribe(data => {
+        fbPost.content = data.content;
+      });
+  }
+
     // Create Facebook Post
     addFacebookPost(content: string) {
       const fbPost: FbPost = { content: content };

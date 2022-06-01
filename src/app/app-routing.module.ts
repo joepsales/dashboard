@@ -12,7 +12,7 @@ const routes: Routes = [{
     path: '',
     component: DashboardComponent
   }, {
-    path: 'posts',
+    path: 'dashboard/posts',
     component: PostsComponent,
     // canActivate: [AuthGuard]
   }]

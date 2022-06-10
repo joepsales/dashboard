@@ -18,7 +18,7 @@ export class PostsService {
   // Create Post
   addPost(title: string, location: string) {
     const post: Post = { id: null!, title: title, location: location };
-    this.http.post<{ message: string, postId: string }>('http://social-it.com/posts', post)
+    this.http.post<{ message: string, postId: string }>('http://localhost:3000/posts', post)
       .subscribe((responseData) => {
         const id = responseData.postId;
         post.id = id;
@@ -31,7 +31,7 @@ export class PostsService {
 
   publishPost(post: Post){
     const fbPost: FbPost = { content: post.title };
-    this.http.post<any>('http://social-it.com/posts/facebook', { content: fbPost.content })
+    this.http.post<any>('http://localhost:3000/posts/facebook', { content: fbPost.content })
       .subscribe(data => {
         fbPost.content = data.content;
       });
@@ -40,7 +40,7 @@ export class PostsService {
     // Create Facebook Post
     addFacebookPost(content: string) {
       const fbPost: FbPost = { content: content };
-      this.http.post<any>('http://social-it.com/posts/facebook', { content: fbPost.content })
+      this.http.post<any>('http://localhost:3000/posts/facebook', { content: fbPost.content })
       .subscribe(data => {
         fbPost.content = data.content;
       });
@@ -56,7 +56,7 @@ export class PostsService {
 
   // Get All Posts
   getPosts() {
-    this.http.get<{ message: string, posts: any }>('http://social-it.com/posts')
+    this.http.get<{ message: string, posts: any }>('http://localhost:3000/posts')
       .pipe(map((postData) => {
         return postData.posts.map((post: { title: any; location: any; _id: any; }) => {
           return {
@@ -74,13 +74,13 @@ export class PostsService {
 
   // Get Post By ID
   getPost(id: string) {
-    return this.http.get<{ _id: string, title: string, location: string }>("http://social-it.com/posts/" + id);
+    return this.http.get<{ _id: string, title: string, location: string }>("http://localhost:3000/posts/" + id);
   }
 
   // Update Post By ID
   updatePost(id: string, title: string, location: string) {
     const post: Post = { id: id, title: title, location: location };
-    this.http.put('http://social-it.com/posts/' + id, post)
+    this.http.put('http://localhost:3000/posts/' + id, post)
       .subscribe(response => {
         const updatedPosts = [...this.posts];
         const oldPostIndex = updatedPosts.findIndex(p => p.id === post.id);
@@ -93,7 +93,7 @@ export class PostsService {
 
   // Delete Post By ID
   deletePost(postId: string) {
-    this.http.delete("http://social-it.com/posts/" + postId)
+    this.http.delete("http://localhost:3000/posts/" + postId)
       .subscribe(() => {
         const updatedPosts = this.posts.filter(post => post.id !== postId);
         this.posts = updatedPosts;

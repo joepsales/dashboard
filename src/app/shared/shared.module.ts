@@ -18,7 +18,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
-
+import { MatDialogModule } from "@angular/material/dialog";
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -68,7 +68,8 @@ import { PostCreateFacebookComponent } from './posts/post-create-facebook/post-c
     MatNativeDateModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    MatExpansionModule
+    MatExpansionModule,
+    MatDialogModule,
   ],
   exports: [
     HeaderComponent,

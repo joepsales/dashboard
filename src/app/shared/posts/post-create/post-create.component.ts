@@ -43,7 +43,7 @@ export class PostCreateComponent implements OnInit {
 
   onSavePost(form: NgForm) {
     if (form.invalid) {
-      this.toastr.error('Form is invalid.', 'Error', {
+      this.toastr.error('Post created unsuccessfully.', 'Error', {
         progressAnimation: "increasing",
         progressBar: true
       })
@@ -53,7 +53,7 @@ export class PostCreateComponent implements OnInit {
     if (this.mode === 'create') {
         this.postsService.addPost(form.value.title, form.value.location);
         console.log(form.value.title + " " + form.value.location);
-        this.toastr.success('Post created successfully.', 'Success', {
+        this.toastr.success('Form validated.', 'Success', {
           progressAnimation: "increasing",
           progressBar: true
         });
